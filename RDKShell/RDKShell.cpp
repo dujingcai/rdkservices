@@ -805,7 +805,7 @@ namespace WPEFramework {
             mCurrentService = service;
             CompositorController::setEventListener(mEventListener);
             bool factoryMacMatched = false;
-#ifdef RFC_ENABLED
+/* #ifdef RFC_ENABLED
             #ifdef RDKSHELL_READ_MAC_ON_STARTUP
             char* mac = new char[19];
             tFHError retAPIStatus;
@@ -850,7 +850,7 @@ namespace WPEFramework {
             #endif //RDKSHELL_READ_MAC_ON_STARTUP
 #else
             std::cout << "rfc is disabled and unable to check for stb mac " << std::endl;
-#endif
+#endif */
 #ifdef RFC_ENABLED
             RFC_ParamData_t param;
             bool ret = Utils::getRFCConfig("Device.DeviceInfo.X_RDKCENTRAL-COM_RFC.Feature.Power.UserInactivityNotification.Enable", param);
@@ -5080,6 +5080,7 @@ namespace WPEFramework {
         bool RDKShell::checkForBootupFactoryAppLaunch()
         {
             std::cout << "inside of checkForBootupFactoryAppLaunch\n";
+            return false;
 #ifdef RFC_ENABLED
             #ifdef RDKSHELL_READ_MAC_ON_STARTUP
             char* mac = new char[19];
