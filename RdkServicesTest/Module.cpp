@@ -17,23 +17,6 @@
 * limitations under the License.
 **/
 
-#ifndef RDKSERVICES_UPLOADLOGS_H
-#define RDKSERVICES_UPLOADLOGS_H
+#include "Module.h"
 
-#include <string>
-
-namespace WPEFramework
-{
-namespace Plugin
-{
-namespace UploadLogs
-{
-    enum err_t { OK = 0, BadUrl, FilenameFail, SsrFail, TarFail, UploadFail, };
-    err_t upload(const std::string& ssrUrl = std::string());
-    int32_t LogUploadBeforeDeepSleep(void);
-    std::string errToText(err_t err);
-} // namespace UploadLogs
-} // namespace Plugin
-} // namespace WPEFramework
-
-#endif //RDKSERVICES_UPLOADLOGS_H
+MODULE_NAME_DECLARATION(BUILD_REFERENCE)

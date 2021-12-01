@@ -17,23 +17,19 @@
 * limitations under the License.
 **/
 
-#ifndef RDKSERVICES_UPLOADLOGS_H
-#define RDKSERVICES_UPLOADLOGS_H
+#include "Token.h"
 
-#include <string>
+namespace RdkServicesTest {
 
-namespace WPEFramework
-{
-namespace Plugin
-{
-namespace UploadLogs
-{
-    enum err_t { OK = 0, BadUrl, FilenameFail, SsrFail, TarFail, UploadFail, };
-    err_t upload(const std::string& ssrUrl = std::string());
-    int32_t LogUploadBeforeDeepSleep(void);
-    std::string errToText(err_t err);
-} // namespace UploadLogs
-} // namespace Plugin
-} // namespace WPEFramework
+auto securityToken() -> string {
+  string token;
 
-#endif //RDKSERVICES_UPLOADLOGS_H
+  unsigned char buffer[1024] = {0};
+  if (GetSecurityToken(1024, buffer) > 0) {
+    token = (const char *) buffer;
+  }
+
+  return token;
+}
+
+} // namespace RdkServicesTest
